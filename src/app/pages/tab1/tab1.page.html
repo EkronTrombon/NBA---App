@@ -1,0 +1,43 @@
+<ion-header no-border>
+    <ion-toolbar color="primary" text-center>
+        <ion-title>Teams Info</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-segment (ionChange)="segmentChanged($event)">
+    <ion-segment-button value="Western">
+        <ion-label class="segment-text">WESTERN CONF.</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="Eastern">
+        <ion-label class="segment-text">EASTERN CONF.</ion-label>
+    </ion-segment-button>
+</ion-segment>
+
+<ion-content>
+    <ion-list lines="none" *ngIf="teams.length === 0">
+        <ion-item *ngFor="let item of [1,1,1,1,1,1,1,1,1,1,1,1]">
+            <ion-avatar slot="start">
+                <ion-skeleton-text animated></ion-skeleton-text>
+            </ion-avatar>
+            <ion-label>
+                <h2>
+                    <ion-skeleton-text animated style="width: 50%"></ion-skeleton-text>
+                </h2>
+                <p>
+                    <ion-skeleton-text animated style="width: 30%"></ion-skeleton-text>
+                </p>
+            </ion-label>
+        </ion-item>
+    </ion-list>
+    <ion-list lines="none" *ngIf="teams.length !== 0">
+        <ion-item *ngFor="let team of teams" (click)="openTeamModal(team)" detail>
+            <ion-avatar slot="start">
+                <img [src]="team.WikipediaLogoUrl" />
+            </ion-avatar>
+            <ion-label>
+                <h2>{{ team.City }} {{ team.Name }}</h2>
+                <p>{{ team.Division }}</p>
+            </ion-label>
+        </ion-item>
+    </ion-list>
+</ion-content>

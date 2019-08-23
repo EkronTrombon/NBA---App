@@ -1,5 +1,7 @@
 {
   "name": "nbaApp",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }
