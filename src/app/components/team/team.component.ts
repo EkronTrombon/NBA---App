@@ -32,7 +32,6 @@ export class TeamComponent implements OnInit {
             resolve(true);
           }
         }
-        console.log(this.teamStats);
       });
     });
   }
@@ -46,7 +45,6 @@ export class TeamComponent implements OnInit {
             resolve(true);
           }
         }
-        console.log(this.teamStadium);
       });
     });
   }
