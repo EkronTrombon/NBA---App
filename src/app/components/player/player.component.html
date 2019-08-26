@@ -1,0 +1,105 @@
+<ion-header no-border>
+    <ion-toolbar color="primary" text-center>
+        <ion-title>{{ playerInfo.FirstName }} {{ playerInfo.LastName }}</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <ion-label class="titulo">
+        <!-- <h1>{{ team.City }} {{ team.Name }}</h1> -->
+    </ion-label>
+    <img class="teamLogo" [src]="teamLogo">
+    <ion-grid>
+        <ion-row>
+            <ion-col size="4" class="poster-detalle-sobre">
+                <ion-card class="playerImg">
+                    <img [src]="playerInfo.PhotoUrl" class="playerImg" *ngIf="playerInfo.PhotoUrl">
+                </ion-card>
+            </ion-col>
+            <ion-col size="8">
+                <ion-item>
+                    <ion-icon color="secondary" slot="start" name="shirt"></ion-icon>
+                    <ion-label>
+                        <h1># {{ playerInfo.Jersey }}</h1>
+                    </ion-label>
+                </ion-item>
+                <ion-item>
+                    <ion-icon color="secondary" slot="start" name="move"></ion-icon>
+                    <ion-label>
+                        <h1>{{ playerInfo.Position }}</h1>
+                    </ion-label>
+                </ion-item>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+    <div class="card-background-page">
+        <ion-card>
+            <img src="../../../assets/img/playerBkgrd2.jpg" />
+            <div class="card-title">{{ playerInfo.FirstName }} {{ playerInfo.LastName }}</div>
+            <div class="card-subtitle">{{ playerInfo.BirthDate | date: 'MM/dd/yyyy' }} - {{ playerInfo.BirthCity }} ({{ playerInfo.BirthState }})</div>
+            <!-- <div class="card-thirdtitle">Capacity: {{ stadium.Capacity }}</div> -->
+            <ion-card-content>
+                <ion-row>
+                    <ion-col size="4">
+                        <h2>Games / Started</h2>
+                        <ion-badge>{{ playerStats.Games }} / {{ playerStats.Started }}</ion-badge>
+                    </ion-col>
+                    <ion-col size="4">
+                        <h2>Points</h2>
+                        <ion-badge color="secondary">{{ playerStats.Points | number: '1.0-0' }}</ion-badge>
+                    </ion-col>
+                    <ion-col size="4">
+                        <h2>Minutes</h2>
+                        <ion-badge>{{ playerStats.Minutes | number: '1.0-0' }}</ion-badge>
+                    </ion-col>
+                </ion-row>
+                <ion-row>
+                    <ion-col size="4">
+                        <h2>Assists</h2>
+                        <ion-badge>{{ playerStats.Assists | number: '1.0-0' }}</ion-badge>
+                    </ion-col>
+                    <ion-col size="4">
+                        <h2>Rebounds</h2>
+                        <ion-badge color="secondary">{{ playerStats.Rebounds | number: '1.0-0' }}</ion-badge>
+                    </ion-col>
+                    <ion-col size="4">
+                        <h2>DReb / OReb</h2>
+                        <ion-badge>{{ playerStats.DefensiveRebounds | number: '1.0-0' }} / {{ playerStats.OffensiveRebounds | number: '1.0-0' }}</ion-badge>
+                    </ion-col>
+                </ion-row>
+                <ion-row>
+                    <ion-col size="4">
+                        <h2>Turnovers</h2>
+                        <ion-badge color="secondary">{{ playerStats.Turnovers | number: '1.0-0' }}</ion-badge>
+                    </ion-col>
+                    <ion-col size="4">
+                        <h2>Steals</h2>
+                        <ion-badge color="secondary">{{ playerStats.Steals | number: '1.0-0' }}</ion-badge>
+                    </ion-col>
+                    <ion-col size="4">
+                        <h2>Blocks</h2>
+                        <ion-badge color="secondary">{{ playerStats.BlockedShots | number: '1.0-0' }}</ion-badge>
+                    </ion-col>
+                </ion-row>
+                <ion-row>
+                    <ion-col size="4">
+                        <h2>% Free throw</h2>
+                        <ion-badge>{{ playerStats.FreeThrowsPercentage }}%</ion-badge>
+                    </ion-col>
+                    <ion-col size="4">
+                        <h2>% 2 pointers</h2>
+                        <ion-badge>{{ playerStats.TwoPointersPercentage }}%</ion-badge>
+                    </ion-col>
+                    <ion-col size="4">
+                        <h2>% 3 pointers</h2>
+                        <ion-badge>{{ playerStats.ThreePointersPercentage }}%</ion-badge>
+                    </ion-col>
+                </ion-row>
+            </ion-card-content>
+        </ion-card>
+    </div>
+</ion-content>
+
+<ion-footer>
+    <ion-button (click)="closeModal()" color="secondary" expand="block" fill="solid" size="small">Close</ion-button>
+</ion-footer>

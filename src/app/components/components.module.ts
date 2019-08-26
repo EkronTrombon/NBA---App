@@ -3,13 +3,15 @@ import { CommonModule } from '@angular/common';
 import { TeamComponent } from './team/team.component';
 import { IonicModule } from '@ionic/angular';
 import { StadiumComponent } from './stadium/stadium.component';
+import { PlayerComponent } from './player/player.component';
 
 
 
 @NgModule({
   declarations: [
     TeamComponent,
-    StadiumComponent
+    StadiumComponent,
+    PlayerComponent
   ],
   imports: [
     CommonModule,
@@ -17,7 +19,8 @@ import { StadiumComponent } from './stadium/stadium.component';
   ],
   exports: [
     TeamComponent,
-    StadiumComponent
+    StadiumComponent,
+    PlayerComponent
   ]
 })
 export class ComponentsModule { }
