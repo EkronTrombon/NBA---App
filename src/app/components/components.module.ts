@@ -4,6 +4,7 @@ import { TeamComponent } from './team/team.component';
 import { IonicModule } from '@ionic/angular';
 import { StadiumComponent } from './stadium/stadium.component';
 import { PlayerComponent } from './player/player.component';
+import { NewsComponent } from '../components/news/news.component';
 
 
 
@@ -11,7 +12,8 @@ import { PlayerComponent } from './player/player.component';
   declarations: [
     TeamComponent,
     StadiumComponent,
-    PlayerComponent
+    PlayerComponent,
+    NewsComponent
   ],
   imports: [
     CommonModule,
@@ -20,7 +22,8 @@ import { PlayerComponent } from './player/player.component';
   exports: [
     TeamComponent,
     StadiumComponent,
-    PlayerComponent
+    PlayerComponent,
+    NewsComponent
   ]
 })
 export class ComponentsModule { }

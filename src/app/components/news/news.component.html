@@ -1,0 +1,38 @@
+<ion-card>
+    <ion-card-header>
+        <ion-card-subtitle>
+            <span class="text-secondary">{{ i + 1 }}. </span>
+            <span class="noticia-source-name">{{ news.Source }}</span>
+        </ion-card-subtitle>
+        <ion-card-title (click)="openNews()">{{ news.Title }}</ion-card-title>
+    </ion-card-header>
+
+    <!-- <img src="assets/img/advance-card-bttf.png"> -->
+
+    <ion-card-content>
+        <p>{{ news.Content | slice: 0: oculto }}...</p>
+        <ion-label color="primary" (click)="oculto = 5000" *ngIf="oculto !== 5000">See more</ion-label>
+    </ion-card-content>
+
+    <ion-row>
+        <ion-col size="4" text-center>
+            <ion-chip color="primary">
+                <ion-icon name='thumbs-up' slot="start"></ion-icon>
+                {{ news.TimeAgo }}
+            </ion-chip>
+        </ion-col>
+        <ion-col size="4" text-center>
+            <ion-chip color="secondary">
+                <ion-icon name='thumbs-up' slot="start"></ion-icon>
+                {{ news.Categories }}
+            </ion-chip>
+        </ion-col>
+        <ion-col size="4" text-center>
+            <ion-chip color="success" *ngIf="news.Team">
+                <ion-icon name='thumbs-up' slot="start"></ion-icon>
+                {{ news.Team }}
+            </ion-chip>
+        </ion-col>
+    </ion-row>
+
+</ion-card>

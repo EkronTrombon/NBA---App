@@ -313,3 +313,22 @@ export interface PlayerStats {
   FantasyPointsFantasyDraft?: number;
   IsClosed?: boolean;
 }
+
+export interface News {
+  NewsID?: number;
+  Source?: string;
+  Updated?: string;
+  TimeAgo?: string;
+  Title?: string;
+  Content?: string;
+  Url?: string;
+  TermsOfUse?: string;
+  Author?: string;
+  Categories?: string;
+  PlayerID?: number;
+  TeamID?: number;
+  Team?: string;
+  PlayerID2?: any;
+  TeamID2?: any;
+  Team2?: any;
+}
