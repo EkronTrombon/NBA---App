@@ -18,37 +18,17 @@ export class PlayerComponent implements OnInit {
   constructor(private playerService: PlayerService,
               private modalCtrl: ModalController) { }
 
-  async ngOnInit() {
-    await this.loadPlayerInfo(this.playerId);
-    await this.loadPlayerStats(this.playerId);
-    // console.log(this.playerInfo);
-    console.log(this.playerStats);
+  ngOnInit() {
+    this.loadPlayerInfo(this.playerId);
+    this.loadPlayerStats(this.playerId);
   }
 
-  loadPlayerInfo(playerId: number) {
-    return new Promise(resolve => {
-      this.playerService.getPlayerInfo(playerId).subscribe((res: PlayerInfo) => {
-        if (res) {
-          this.playerInfo = res;
-          resolve(true);
-        } else {
-          resolve(false);
-        }
-      });
-    });
+  async loadPlayerInfo(playerId: number) {
+    this.playerInfo = await this.playerService.getPlayerInfo(playerId);
   }
 
-  loadPlayerStats(playerId: number) {
-    return new Promise(resolve => {
-      this.playerService.getPlayerStats(playerId).subscribe((res: PlayerStats) => {
-        if (res) {
-          this.playerStats = res;
-          resolve(true);
-        } else {
-          resolve(false);
-        }
-      });
-    });
+  async loadPlayerStats(playerId: number) {
+    this.playerStats = await this.playerService.getPlayerStats(playerId);
   }
 
   closeModal() {

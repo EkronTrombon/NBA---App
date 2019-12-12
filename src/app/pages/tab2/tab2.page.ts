@@ -4,6 +4,8 @@ import { TeamService } from '../../services/team.service';
 import { PlayerService } from '../../services/player.service';
 import { ModalController } from '@ionic/angular';
 import { PlayerComponent } from '../../components/player/player.component';
+import { from } from 'rxjs';
+import { filter } from 'rxjs/operators';
 
 @Component({
   selector: 'app-tab2',
@@ -20,24 +22,16 @@ export class Tab2Page  implements OnInit {
               private playerService: PlayerService,
               private modalCtrl: ModalController) {}
 
-  async ngOnInit() {
-    await this.loadTeams();
+  ngOnInit() {
+    this.loadTeams();
   }
 
-  loadTeams() {
-    return new Promise(resolve => {
-      this.teamService.getTeams().subscribe((res: Team[]) => {
-        for (const team of res) {
-          if (team.TeamID !== 31 && team.TeamID !== 32) {
-            this.teams.push(team);
-          }
-        }
-        if (this.teams.length > 0) {
-          resolve(true);
-        } else {
-          resolve(false);
-        }
-      });
+  async loadTeams() {
+    const allTeams = await this.teamService.getTeams();
+    from(allTeams).pipe(
+      filter(team => team.TeamID <= 30)
+    ).subscribe(resp => {
+      this.teams.push(resp);
     });
   }
 
@@ -46,17 +40,8 @@ export class Tab2Page  implements OnInit {
     await this.selTeamPlayers(this.selectedTeam.Key);
   }
 
-  selTeamPlayers(key: string) {
-    return new Promise(resolve => {
-      this.playerService.getPlayerByTeam(key).subscribe((res: Player[]) => {
-        if (res.length > 0) {
-          this.players = res;
-          resolve(true);
-        } else {
-          resolve(false);
-        }
-      });
-    });
+  async selTeamPlayers(key: string) {
+    this.players = await this.playerService.getPlayerByTeam(key);
   }
 
   async openPlayerModal(playerId: number) {

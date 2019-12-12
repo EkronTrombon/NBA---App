@@ -3,6 +3,8 @@ import { TeamService } from '../../services/team.service';
 import { Team } from 'src/app/interfaces/interfaces';
 import { TeamComponent } from '../../components/team/team.component';
 import { ModalController } from '@ionic/angular';
+import { from } from 'rxjs';
+import { filter } from 'rxjs/operators';
 
 @Component({
   selector: 'app-tab1',
@@ -23,20 +25,12 @@ export class Tab1Page implements OnInit {
     await this.loadTeams(conf);
   }
 
-  loadTeams(conf: string) {
-    return new Promise(resolve => {
-      this.teamService.getTeams().subscribe((res: Team[]) => {
-        for (const team of res) {
-          if (team.Conference === conf) {
-            this.teams.push(team);
-          }
-        }
-        if (this.teams.length > 0) {
-          resolve(true);
-        } else {
-          resolve(false);
-        }
-      });
+  async loadTeams(conf: string) {
+    const allTeams = await this.teamService.getTeams();
+    from(allTeams).pipe(
+      filter(team => (team.TeamID <= 30 && team.Conference === conf))
+    ).subscribe(resp => {
+      this.teams.push(resp);
     });
   }
 

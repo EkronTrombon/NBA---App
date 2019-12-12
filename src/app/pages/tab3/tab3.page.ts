@@ -13,21 +13,23 @@ export class Tab3Page implements OnInit {
 
   constructor(private newsService: NewsService) {}
 
-  async ngOnInit() {
-    await this.loadNews();
+  ngOnInit() {
+    this.loadNews();
   }
 
-  loadNews() {
-    return new Promise(resolve => {
-      this.newsService.getNews().subscribe((res: News[]) => {
-        if (res.length > 0) {
-          this.news = res;
-          resolve(true);
-        } else {
-          resolve(false);
-        }
-      });
-    });
+  async loadNews() {
+    // return new Promise(resolve => {
+    //   this.newsService.getNews().subscribe((res: News[]) => {
+    //     if (res.length > 0) {
+    //       this.news = res;
+    //       resolve(true);
+    //     } else {
+    //       resolve(false);
+    //     }
+    //   });
+    // });
+    this.news = await this.newsService.getNews();
+    console.log(this.news);
   }
 
 }

@@ -2,7 +2,8 @@ import { Component, OnInit, Input } from '@angular/core';
 import { Team, TeamStats, Stadium } from '../../interfaces/interfaces';
 import { ModalController } from '@ionic/angular';
 import { TeamService } from '../../services/team.service';
-import { resolve } from 'q';
+import { from } from 'rxjs';
+import { filter } from 'rxjs/operators';
 
 @Component({
   selector: 'app-team',
@@ -18,35 +19,23 @@ export class TeamComponent implements OnInit {
   constructor(private modalCtrl: ModalController,
               private teamService: TeamService) {}
 
-  async ngOnInit() {
-    await this.getTeamStats(this.team.TeamID);
-    await this.getTeamStadium(this.team.StadiumID);
+  ngOnInit() {
+    this.getTeamStats(this.team.TeamID);
+    this.getTeamStadium(this.team.StadiumID);
   }
 
-  getTeamStats(idTeam: number) {
-    return new Promise(resolve => {
-      this.teamService.getTeamStats().subscribe((res: TeamStats[]) => {
-        for (const stat of res) {
-          if (stat.TeamID === idTeam) {
-            this.teamStats = stat;
-            resolve(true);
-          }
-        }
-      });
-    });
+  async getTeamStats(idTeam: number) {
+    const teamsStats = await this.teamService.getTeamStats();
+    from(teamsStats).pipe(
+      filter(team => team.TeamID === idTeam)
+    ).subscribe(resp => this.teamStats = resp);
   }
 
-  getTeamStadium(idStadium: number) {
-    return new Promise(resolve => {
-      this.teamService.getStadiums().subscribe((res: Stadium[]) => {
-        for (const stadium of res) {
-          if (stadium.StadiumID === idStadium) {
-            this.teamStadium = stadium;
-            resolve(true);
-          }
-        }
-      });
-    });
+  async getTeamStadium(idStadium: number) {
+    const allStadiums = await this.teamService.getStadiums();
+    from(allStadiums).pipe(
+      filter(stadium => stadium.StadiumID === idStadium)
+    ).subscribe(resp => this.teamStadium = resp);
   }
 
   closeModal() {
