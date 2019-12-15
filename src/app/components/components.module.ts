@@ -5,6 +5,7 @@ import { IonicModule } from '@ionic/angular';
 import { StadiumComponent } from './stadium/stadium.component';
 import { PlayerComponent } from './player/player.component';
 import { NewsComponent } from '../components/news/news.component';
+import { TeamStatsComponent } from './team-stats/team-stats.component';
 
 
 
@@ -13,7 +14,8 @@ import { NewsComponent } from '../components/news/news.component';
     TeamComponent,
     StadiumComponent,
     PlayerComponent,
-    NewsComponent
+    NewsComponent,
+    TeamStatsComponent
   ],
   imports: [
     CommonModule,
@@ -23,7 +25,8 @@ import { NewsComponent } from '../components/news/news.component';
     TeamComponent,
     StadiumComponent,
     PlayerComponent,
-    NewsComponent
+    NewsComponent,
+    TeamStatsComponent
   ]
 })
 export class ComponentsModule { }

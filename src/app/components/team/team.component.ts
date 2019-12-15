@@ -15,6 +15,7 @@ export class TeamComponent implements OnInit {
   @Input() team: Team;
   teamStats: TeamStats = {};
   teamStadium: Stadium = {};
+  selSegment: string;
 
   constructor(private modalCtrl: ModalController,
               private teamService: TeamService) {}
@@ -40,6 +41,10 @@ export class TeamComponent implements OnInit {
 
   closeModal() {
     this.modalCtrl.dismiss();
+  }
+
+  segmentChanged(event) {
+    this.selSegment = event.detail.value;
   }
 
 }
