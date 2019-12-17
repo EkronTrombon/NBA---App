@@ -12,8 +12,10 @@ export class PlayerComponent implements OnInit {
 
   @Input() playerId: number;
   @Input() teamLogo: string;
+  @Input() teamName: string;
   playerInfo: PlayerInfo = {};
   playerStats: PlayerStats = {};
+  selSegment: string;
 
   constructor(private playerService: PlayerService,
               private modalCtrl: ModalController) { }
@@ -33,6 +35,10 @@ export class PlayerComponent implements OnInit {
 
   closeModal() {
     this.modalCtrl.dismiss();
+  }
+
+  segmentChanged(event) {
+    this.selSegment = event.detail.value;
   }
 
 }

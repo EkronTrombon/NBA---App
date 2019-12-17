@@ -6,6 +6,8 @@ import { StadiumComponent } from './stadium/stadium.component';
 import { PlayerComponent } from './player/player.component';
 import { NewsComponent } from '../components/news/news.component';
 import { TeamStatsComponent } from './team-stats/team-stats.component';
+import { PlayerBioComponent } from './player-bio/player-bio.component';
+import { PlayerStatsComponent } from './player-stats/player-stats.component';
 
 
 
@@ -15,7 +17,9 @@ import { TeamStatsComponent } from './team-stats/team-stats.component';
     StadiumComponent,
     PlayerComponent,
     NewsComponent,
-    TeamStatsComponent
+    TeamStatsComponent,
+    PlayerBioComponent,
+    PlayerStatsComponent
   ],
   imports: [
     CommonModule,
@@ -26,7 +30,9 @@ import { TeamStatsComponent } from './team-stats/team-stats.component';
     StadiumComponent,
     PlayerComponent,
     NewsComponent,
-    TeamStatsComponent
+    TeamStatsComponent,
+    PlayerBioComponent,
+    PlayerStatsComponent
   ]
 })
 export class ComponentsModule { }

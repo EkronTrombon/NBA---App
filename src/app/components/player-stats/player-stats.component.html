@@ -1,0 +1,58 @@
+<ion-row>
+    <ion-col size="12">
+        <ion-list>
+            <ion-item lines="none">
+                <ion-label>Games / Started:</ion-label>
+                <ion-badge color="primary" slot="end">{{ playerStats.Games }} / {{ playerStats.Started }}</ion-badge>
+            </ion-item>
+            <ion-item lines="none">
+                <ion-label>Minutes:</ion-label>
+                <ion-badge color="secondary" slot="end">{{ playerStats.Minutes | number: '1.0-0' }}</ion-badge>
+            </ion-item>
+            <ion-item lines="none">
+                <ion-label>Points:</ion-label>
+                <ion-badge color="primary" slot="end">{{ playerStats.Points | number: '1.0-0' }}</ion-badge>
+            </ion-item>
+            <ion-item lines="none">
+                <ion-label>Rebounds:</ion-label>
+                <ion-badge color="secondary" slot="end">{{ playerStats.Rebounds | number: '1.0-0' }}</ion-badge>
+            </ion-item>
+            <ion-item lines="none">
+                <ion-label>Assists:</ion-label>
+                <ion-badge color="primary" slot="end">{{ playerStats.Assists | number: '1.0-0' }}</ion-badge>
+            </ion-item>
+            <ion-item lines="none">
+                <ion-label>Turnovers:</ion-label>
+                <ion-badge color="secondary" slot="end">{{ playerStats.Turnovers | number: '1.0-0' }}</ion-badge>
+            </ion-item>
+            <ion-item lines="none">
+                <ion-label>Steals:</ion-label>
+                <ion-badge color="primary" slot="end">{{ playerStats.Steals | number: '1.0-0' }}</ion-badge>
+            </ion-item>
+            <ion-item lines="none">
+                <ion-label>Blocks:</ion-label>
+                <ion-badge color="secondary" slot="end">{{ playerStats.BlockedShots | number: '1.0-0' }}</ion-badge>
+            </ion-item>
+            <ion-item lines="none">
+                <ion-label>DReb / OReb:</ion-label>
+                <ion-badge color="primary" slot="end">{{ playerStats.DefensiveRebounds | number: '1.0-0' }} / {{ playerStats.OffensiveRebounds | number: '1.0-0' }}</ion-badge>
+            </ion-item>
+            <ion-item lines="none">
+                <ion-label>Blocks:</ion-label>
+                <ion-badge color="secondary" slot="end">{{ playerStats.BlockedShots | number: '1.0-0' }}</ion-badge>
+            </ion-item>
+            <ion-item lines="none">
+                <ion-label>1pt %:</ion-label>
+                <ion-badge color="primary" slot="end">{{ playerStats.FreeThrowsPercentage }}%</ion-badge>
+            </ion-item>
+            <ion-item lines="none">
+                <ion-label>2pt %:</ion-label>
+                <ion-badge color="secondary" slot="end">{{ playerStats.TwoPointersPercentage }}%</ion-badge>
+            </ion-item>
+            <ion-item lines="none">
+                <ion-label>3pt %:</ion-label>
+                <ion-badge color="primary" slot="end">{{ playerStats.ThreePointersPercentage }}%</ion-badge>
+            </ion-item>
+        </ion-list>
+    </ion-col>
+</ion-row>

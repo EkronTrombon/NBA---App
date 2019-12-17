@@ -47,7 +47,10 @@ export class Tab2Page  implements OnInit {
   async openPlayerModal(playerId: number) {
     const modal = await this.modalCtrl.create({
       component: PlayerComponent,
-      componentProps: { 'playerId': playerId, 'teamLogo': this.selectedTeam.WikipediaLogoUrl }
+      componentProps: { 'playerId': playerId,
+                        'teamLogo': this.selectedTeam.WikipediaLogoUrl,
+                        'teamName': `${this.selectedTeam.City} ${this.selectedTeam.Name}`
+                      }
     });
     return await modal.present();
   }
